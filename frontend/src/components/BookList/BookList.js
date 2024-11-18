@@ -4,7 +4,6 @@ import './BookList.css';
 const BookList = () => {
   const books = useSelector(({ books }) => books);
 
-  console.log(books);
   return (
     <div className="app-block book-list">
       <h2>Book List</h2>
@@ -12,8 +11,8 @@ const BookList = () => {
         <p>No books available</p>
       ) : (
         <ul>
-          {books.map(({ title, author }, i) => (
-            <li key={i}>
+          {books.map(({ title, author, id }, i) => (
+            <li key={id}>
               <div className="book-info">
                 {++i}. {title} by <strong>{author}</strong>
               </div>

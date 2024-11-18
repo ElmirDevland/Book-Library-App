@@ -1,6 +1,6 @@
-import BookFrom from './components/BookForm/BookForm';
-import BookList from './components/BookList/BookList';
-import Filter from './components/Filter/Filter';
+import BookFrom from '../BookForm/BookForm';
+import BookList from '../BookList/BookList';
+import Filter from '../Filter/Filter';
 
 import './App.css';
 
