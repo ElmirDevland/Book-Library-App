@@ -1,4 +1,4 @@
-import { ADD_BOOK } from './actionTypes';
+import { ADD_BOOK, DELETE_BOOK } from './actionTypes';
 
 const addBook = (newBook) => {
   return {
@@ -7,4 +7,11 @@ const addBook = (newBook) => {
   };
 };
 
-export { addBook };
+const deleteBook = (id) => {
+  return {
+    type: DELETE_BOOK,
+    payload: id,
+  };
+};
+
+export { addBook, deleteBook };

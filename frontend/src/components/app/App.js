@@ -1,4 +1,4 @@
-import BookFrom from '../BookForm/BookForm';
+import BookForm from '../BookForm/BookForm';
 import BookList from '../BookList/BookList';
 import Filter from '../Filter/Filter';
 
@@ -12,7 +12,7 @@ function App() {
       </header>
       <main className="app-main">
         <div className="app-left-column">
-          <BookFrom />
+          <BookForm />
         </div>
         <div className="app-right-column">
           {/* <Filter /> */}
