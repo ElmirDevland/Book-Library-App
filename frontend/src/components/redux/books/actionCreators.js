@@ -1,4 +1,4 @@
-import { ADD_BOOK, DELETE_BOOK } from './actionTypes';
+import { ADD_BOOK, DELETE_BOOK, TOGGLE_FAVORITE } from './actionTypes';
 
 const addBook = (newBook) => {
   return {
@@ -14,4 +14,11 @@ const deleteBook = (id) => {
   };
 };
 
-export { addBook, deleteBook };
+const toggleFavorite = (id) => {
+  return {
+    type: TOGGLE_FAVORITE,
+    payload: id,
+  };
+};
+
+export { addBook, deleteBook, toggleFavorite };

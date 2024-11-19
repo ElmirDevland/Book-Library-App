@@ -1,4 +1,4 @@
-import { ADD_BOOK, DELETE_BOOK } from './actionTypes';
+import { ADD_BOOK, TOGGLE_FAVORITE, DELETE_BOOK } from './actionTypes';
 
 const initialState = [];
 
@@ -8,7 +8,10 @@ const booksReducer = (state = initialState, action) => {
       return [...state, action.payload];
     case DELETE_BOOK:
       return state.filter(({ id }) => id !== action.payload);
-
+    case TOGGLE_FAVORITE:
+      return state.map((book) =>
+        book.id === action.payload ? { ...book, isFav: !book.isFav } : book
+      );
     default:
       return state;
   }
