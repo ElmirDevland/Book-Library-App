@@ -1,21 +1,28 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import './Filter.css';
 import {
   setTitleFilter,
   setAuthorFilter,
+  setFavFilters,
   resetFilters,
   selectTitleFilter,
   selectAuthorFilter,
+  selectFavFilter,
 } from '../redux/slices/filterSlice';
+
+import './Filter.css';
 
 const Filter = () => {
   const dispatch = useDispatch();
   const filterTitle = useSelector(selectTitleFilter);
   const filterAuthor = useSelector(selectAuthorFilter);
+  const filterFav = useSelector(selectFavFilter);
 
   const handleChangeFilter = (e, filterAction) => {
     dispatch(filterAction(e.target.value));
+  };
+  const handleChangeFavFilter = () => {
+    dispatch(setFavFilters());
   };
 
   const handleResetFilters = () => {
@@ -39,6 +46,16 @@ const Filter = () => {
             placeholder="Filter by author..."
             value={filterAuthor}
           />
+        </div>
+        <div className="filter-group">
+          <label>
+            <input
+              checked={filterFav}
+              type="checkbox"
+              onChange={handleChangeFavFilter}
+            />
+            Select Fav books
+          </label>
         </div>
         <button onClick={handleResetFilters}>Reset filters</button>
       </div>
