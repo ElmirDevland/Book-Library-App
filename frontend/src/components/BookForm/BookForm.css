@@ -31,6 +31,10 @@
 .book-form button:hover {
    background-color: #0056b3;
 }
+.book-form button:disabled {
+   background-color: #0056b3;
+   cursor: not-allowed;
+}
 
 .book-form .spinner {
    animation: spinner 1s infinite linear;

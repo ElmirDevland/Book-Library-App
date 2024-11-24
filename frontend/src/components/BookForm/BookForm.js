@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { ImSpinner8 } from 'react-icons/im';
 
 import createBookWithID from '../utils/createBookWithID';
 import { addBook, fetchBook } from '../redux/slices/booksSlice';
@@ -10,6 +11,7 @@ import './BookForm.css';
 const BookForm = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -32,7 +34,12 @@ const BookForm = () => {
   };
 
   const handleAddRandomBookViaAPI = async () => {
-    dispatch(fetchBook('http://localhost:4000/random-book'));
+    try {
+      setIsLoading(true);
+      await dispatch(fetchBook('http://localhost:4000/random-book'));
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -65,8 +72,19 @@ const BookForm = () => {
         <button type="button" onClick={handleAddRandomBook}>
           Add Random Book
         </button>
-        <button type="button" onClick={handleAddRandomBookViaAPI}>
-          Add Random via API
+        <button
+          disabled={isLoading}
+          type="button"
+          onClick={handleAddRandomBookViaAPI}
+        >
+          {isLoading ? (
+            <>
+              <span>Book is Loading...</span>
+              <ImSpinner8 className="spinner" />
+            </>
+          ) : (
+            'Add Random via API'
+          )}
         </button>
       </form>
     </div>
