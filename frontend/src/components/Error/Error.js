@@ -16,7 +16,7 @@ const Error = () => {
     }
   }, [errorMessage, dispatch]);
 
-  return <ToastContainer position="top-right" theme="dark" autoClose={3000} />;
+  return <ToastContainer position="top-right" theme="dark" autoClose={2000} />;
 };
 
 export default Error;
